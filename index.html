@@ -15,7 +15,8 @@
   --light-bg:#f2f2f2;--light-border:#ddd;--light-text:#333333;
   --active:#bbb;--visited:#444;--inactive:#222;
 }
-html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrains Mono',monospace;color:var(--text);}
+html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrains Mono',monospace;color:var(--text); body { zoom: 1.25; }
+}
 
 /* GRID BG */
 .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
@@ -163,6 +164,7 @@ svg.arch{width:100%;height:auto;}
 </style>
 </head>
 <body>
+
 <div class="grid-bg"></div>
 
 <div class="topbar">
