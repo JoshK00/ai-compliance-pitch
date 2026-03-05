@@ -387,65 +387,39 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
     </div>
   </div>
 
-  <!-- S6: BUSINESS VALUE -->
+  <!-- S6: PROJECT VALUE -->
   <div class="slide" id="s6">
     <div style="width:100%;max-width:800px;">
-      <div class="sec-label">05 · BUSINESS VALUE</div>
-      <div class="sec-title"><span class="glitch-wrap"><span class="glitch-main">Why It Matters</span><span class="glitch-ghost" aria-hidden="true">Why It Matters</span></span></div>
+      <div class="sec-label">05 · PROJECT VALUE</div>
+      <div class="sec-title"><span class="glitch-wrap"><span class="glitch-main">What We Reinforce</span><span class="glitch-ghost" aria-hidden="true">What We Reinforce</span></span></div>
       <div class="sec-rule"></div>
       <div class="value-grid">
         <div class="val-card">
-          <div class="val-icon"><span class="material-icons">bolt</span></div>
-          <div class="val-title">Time & Cost Savings</div>
-          <div class="val-desc">Replaces weeks of manual legal audit with automated analysis. Reduce compliance overhead by orders of magnitude.</div>
+          <div class="val-icon"><span class="material-icons">balance</span></div>
+          <div class="val-title">Responsible AI</div>
+          <div class="val-desc">This project operationalizes AI Ethics — compliance, transparency, and explainability built into the core.</div>
         </div>
         <div class="val-card">
-          <div class="val-icon"><span class="material-icons">shield</span></div>
-          <div class="val-title">Regulatory Risk Reduction</div>
-          <div class="val-desc">Regular scans surface compliance gaps early — before they become audit risks.</div>
+          <div class="val-icon"><span class="material-icons">psychology</span></div>
+          <div class="val-title">Applied NLP & Classification</div>
+          <div class="val-desc">Fine-tuning LegalBERT on synthetically generated training data.</div>
         </div>
         <div class="val-card">
-          <div class="val-icon"><span class="material-icons">manage_search</span></div>
-          <div class="val-title">Actionable Explainability</div>
-          <div class="val-desc">Not just status flags — article-level citations and explainability signals that give teams a clear starting point for remediation.</div>
+          <div class="val-icon"><span class="material-icons">account_tree</span></div>
+          <div class="val-title">RAG Pipeline & Scraping</div>
+          <div class="val-desc">End-to-end pipeline: live web scraping, vector embeddings, retrieval-augmented generation.</div>
         </div>
         <div class="val-card">
-          <div class="val-icon"><span class="material-icons">trending_up</span></div>
-          <div class="val-title">Scales with You</div>
-          <div class="val-desc">Whether you operate 1 AI system or 1,000 — the architecture handles it.</div>
+          <div class="val-icon"><span class="material-icons">rocket_launch</span></div>
+          <div class="val-title">Deployment & Dashboard</div>
+          <div class="val-desc">FastAPI backend, Plotly Dash frontend.</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- S7: WHY NOW -->
+  <!-- S7: CTA -->
   <div class="slide" id="s7">
-    <div style="width:100%;max-width:860px;">
-      <div class="sec-label">06 · TIMING</div>
-      <div class="sec-title"><span class="glitch-wrap"><span class="glitch-main">The Window Is Open.</span><span class="glitch-ghost" aria-hidden="true">The Window Is Open.</span></span></div>
-      <div class="sec-rule"></div>
-      <div class="why-row">
-        <div class="why-item">
-          <div class="why-label">REGULATION</div>
-          <div class="why-headline">EU AI Act is Live</div>
-          <div class="why-body">Enforceable since April 2024. Every company using AI is now legally obligated to demonstrate compliance. The market need is immediate.</div>
-        </div>
-        <div class="why-item">
-          <div class="why-label">MARKET</div>
-          <div class="why-headline">Adoption Gap is Real</div>
-          <div class="why-body">90% of enterprises use AI daily. Only 18% have fully implemented governance frameworks. The tooling demand is massive and largely unmet.</div>
-        </div>
-        <div class="why-item">
-          <div class="why-label">DIFFERENTIATOR</div>
-          <div class="why-headline">Built for Practitioners</div>
-          <div class="why-body">Compliance mapped to your specific AI systems — explained by ML, updated as regulation evolves.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- S8: CTA -->
-  <div class="slide" id="s8">
     <div class="cta-box">
       <div class="scanlines"></div>
       <div class="corners"><div class="c tl" style="border-color:var(--border3)"></div><div class="c tr" style="border-color:var(--border3)"></div><div class="c bl" style="border-color:var(--border3)"></div><div class="c br" style="border-color:var(--border3)"></div></div>
@@ -467,7 +441,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
 </div>
 
 <script>
-const TOTAL=8;let cur=1;
+const TOTAL=7;let cur=1;
 const segsEl=document.getElementById('segs');
 for(let i=0;i<TOTAL;i++){const d=document.createElement('div');d.className='seg';d.id='seg'+i;segsEl.appendChild(d);}
 function updateSegs(){for(let i=0;i<TOTAL;i++){const el=document.getElementById('seg'+i);if(i<cur-1){el.style.width='8px';el.style.background='#666';}else if(i===cur-1){el.style.width='24px';el.style.background='#eee';}else{el.style.width='8px';el.style.background='#333';}}}
