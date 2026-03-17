@@ -9,36 +9,23 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --bg:#111111;
-  --surface:#1e1e1e;
-  --surface2:#252525;
-  --border:#333333;
-  --border2:#444444;
-  --border3:#555555;
-  --text:#ffffff;
-  --muted:#aaaaaa;
-  --ghost:#666666;
-  --light-bg:#f2f2f2;
-  --light-border:#ccc;
-  --light-text:#111111;
-  --active:#eeeeee;
-  --visited:#666666;
-  --inactive:#333333;
+  --bg:#111111;--surface:#1e1e1e;--surface2:#252525;
+  --border:#333333;--border2:#444444;--border3:#555555;
+  --text:#ffffff;--muted:#aaaaaa;--ghost:#666666;
+  --light-bg:#f2f2f2;--light-border:#ccc;--light-text:#111111;
+  --active:#eeeeee;--visited:#666666;--inactive:#333333;
 }
 html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrains Mono',monospace;color:var(--text);font-size:16px;}
-
 .grid-bg{position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
   background-size:40px 40px;}
 .grid-bg::after{content:'';position:fixed;inset:0;pointer-events:none;
   background:radial-gradient(ellipse 80% 70% at 50% 50%,transparent 30%,#111111 100%);}
-
 .deck{position:relative;z-index:1;width:100%;height:100vh;overflow:hidden;}
 .slide{position:absolute;top:60px;bottom:70px;left:0;right:0;display:flex;flex-direction:column;
   justify-content:center;align-items:center;padding:24px 52px;
   opacity:0;pointer-events:none;transition:opacity .15s ease,transform .15s ease;transform:translateY(12px);}
 .slide.active{opacity:1;pointer-events:all;transform:translateY(0);}
-
 .nav{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);z-index:100;display:flex;align-items:center;gap:16px;}
 .nav-btn{background:var(--surface);border:1px solid var(--border2);border-radius:2px;
   padding:10px 22px;color:var(--muted);font-family:inherit;font-size:11px;letter-spacing:.2em;
@@ -47,25 +34,19 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
 .nav-btn:disabled{opacity:.2;cursor:not-allowed;}
 .seg-wrap{display:flex;gap:4px;align-items:center;}
 .seg{height:2px;border-radius:1px;transition:all .35s ease;}
-
 .slide-num{position:fixed;top:20px;right:36px;font-size:11px;letter-spacing:.18em;color:var(--ghost);z-index:100;}
 .topbar{position:fixed;top:20px;left:36px;display:flex;align-items:center;gap:10px;z-index:100;}
 .topbar-dot{width:7px;height:7px;border-radius:50%;background:var(--border3);animation:statusblink 2.5s ease-in-out infinite;}
 .topbar-label{font-size:11px;letter-spacing:.18em;color:var(--ghost);}
-
 .scanlines{position:absolute;inset:0;pointer-events:none;border-radius:3px;
   background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.05) 3px,rgba(0,0,0,.05) 4px);}
-
 .corners{position:absolute;inset:0;pointer-events:none;}
 .c{position:absolute;width:16px;height:16px;}
 .c.tl{top:0;left:0;border-top:1px solid var(--border3);border-left:1px solid var(--border3);}
 .c.tr{top:0;right:0;border-top:1px solid var(--border3);border-right:1px solid var(--border3);}
 .c.bl{bottom:0;left:0;border-bottom:1px solid var(--border3);border-left:1px solid var(--border3);}
 .c.br{bottom:0;right:0;border-bottom:1px solid var(--border3);border-right:1px solid var(--border3);}
-
 .tag{font-size:11px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;}
-.tag-ghost{font-size:11px;letter-spacing:.2em;color:var(--ghost);text-transform:uppercase;}
-
 @keyframes glitch1{
   0%,90%,100%{clip-path:none;transform:none;opacity:1;}
   91%{clip-path:polygon(0 15%,100% 15%,100% 35%,0 35%);transform:translate(-4px,0);opacity:.8;}
@@ -81,62 +62,30 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
 .glitch-wrap{position:relative;display:inline-block;}
 .glitch-wrap .glitch-main{animation:glitch1 9s infinite;}
 .glitch-wrap .glitch-ghost{position:absolute;inset:0;animation:glitch2 9s infinite;color:var(--muted);}
-
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 .cursor{display:inline-block;width:2px;height:.9em;background:var(--text);margin-left:3px;vertical-align:middle;animation:blink 1s step-end infinite;}
 @keyframes statusblink{0%,100%{opacity:1}50%{opacity:.3}}
-
-/* COVER */
-.cover-kicker{font-size:12px;letter-spacing:.3em;color:var(--muted);margin-bottom:22px;}
 .cover-title{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;text-align:center;margin-bottom:14px;}
 .cover-sub{font-size:clamp(.95rem,1.8vw,1.2rem);color:var(--muted);letter-spacing:.1em;text-align:center;margin-bottom:44px;}
 .cover-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border2);padding:10px 22px;border-radius:2px;font-size:12px;letter-spacing:.18em;color:var(--muted);}
-
-/* PROBLEM */
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;max-width:1000px;margin-top:22px;}
 .prob-card{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:22px 26px;position:relative;}
 .prob-num{font-size:11px;letter-spacing:.2em;color:var(--ghost);margin-bottom:10px;}
 .prob-text{font-size:.95rem;color:var(--active);line-height:1.75;}
-
-/* SOLUTION */
-.solution-steps{display:flex;flex-direction:column;gap:12px;width:100%;max-width:760px;margin-top:20px;}
-.step{display:flex;align-items:flex-start;gap:22px;background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:18px 26px;}
-.step-idx{font-size:11px;letter-spacing:.2em;color:var(--ghost);min-width:28px;padding-top:2px;}
-.step-title{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:5px;}
-.step-desc{font-size:.86rem;color:var(--muted);line-height:1.7;}
-
-/* VALUE */
 .value-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;width:100%;max-width:800px;margin-top:22px;}
 .val-card{background:var(--surface);border:1px solid var(--border);border-radius:2px;padding:24px 26px;position:relative;overflow:hidden;}
 .val-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:var(--border3);}
 .val-icon{font-size:1.3rem;margin-bottom:12px;color:var(--muted);}
 .val-title{font-size:.92rem;font-weight:600;color:var(--text);margin-bottom:8px;}
 .val-desc{font-size:.84rem;color:var(--muted);line-height:1.75;}
-
-/* WHY NOW */
-.why-row{display:flex;align-items:stretch;width:100%;max-width:860px;margin-top:24px;border:1px solid var(--border);border-radius:2px;overflow:hidden;}
-.why-item{flex:1;padding:28px 26px;border-right:1px solid var(--border);}
-.why-item:last-child{border-right:none;}
-.why-label{font-size:11px;letter-spacing:.2em;color:var(--ghost);margin-bottom:12px;}
-.why-headline{font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:10px;line-height:1.3;}
-.why-body{font-size:.84rem;color:var(--muted);line-height:1.75;}
-
-/* CTA */
 .cta-box{background:var(--surface);border:1px solid var(--border2);border-radius:2px;padding:52px 64px;position:relative;text-align:center;max-width:700px;width:100%;}
 .cta-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-.03em;margin-bottom:18px;line-height:1.1;}
-.cta-sub{font-size:1rem;color:var(--muted);line-height:1.85;max-width:480px;margin:0 auto;}
-
-/* SECTION */
 .sec-label{font-size:11px;letter-spacing:.25em;color:var(--muted);margin-bottom:8px;}
 .sec-title{font-size:clamp(1.7rem,4vw,2.9rem);font-weight:700;letter-spacing:-.03em;}
 .sec-rule{width:32px;height:1px;background:var(--border3);margin:12px 0 0 0;}
-
 @media(max-width:600px){
   .slide{padding:16px 20px;}
   .problem-grid,.value-grid{grid-template-columns:1fr;}
-  .why-row{flex-direction:column;}
-  .why-item{border-right:none;border-bottom:1px solid var(--border);}
-  .why-item:last-child{border-bottom:none;}
   .cta-box{padding:28px 24px;}
 }
 </style>
@@ -144,8 +93,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
 <body>
 <div class="grid-bg"></div>
 <div class="topbar"><div class="topbar-dot"></div><span class="topbar-label">AI_COMPLIANCE_MONITOR</span></div>
-<div class="slide-num" id="slideNum">01 / 07</div>
-
+<div class="slide-num" id="slideNum">01 / 06</div>
 <div class="deck">
 
   <!-- S1: COVER -->
@@ -154,7 +102,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
       <div class="glitch-wrap"><span class="glitch-main">AI Compliance<br/>Monitor</span><span class="glitch-ghost" aria-hidden="true">AI Compliance<br/>Monitor</span></div>
       <span class="cursor"></span>
     </div>
-    <div class="cover-sub">EU AI Act Compliance · Real-Time Risk Intelligence</div>
+    <div class="cover-sub">EU AI Act Compliance · Explainable Risk Classification</div>
     <div class="cover-badge">EU AI ACT · AUGUST 2024</div>
   </div>
 
@@ -171,7 +119,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
         </div>
         <div class="prob-card"><div class="corners"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
           <div class="prob-num">02 / ACCOUNTABILITY</div>
-          <div class="prob-text">Proving responsible AI use without tooling costs workforce and time.</div>
+          <div class="prob-text">Proving responsible AI use without tooling means legal teams and slow audits.</div>
         </div>
         <div class="prob-card"><div class="corners"><div class="c tl"></div><div class="c tr"></div><div class="c bl"></div><div class="c br"></div></div>
           <div class="prob-num">03 / COST</div>
@@ -185,128 +133,87 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
     </div>
   </div>
 
-  <!-- S3: SOLUTION -->
+  <!-- S3: THE SOLUTION (Architecture) -->
   <div class="slide" id="s3">
-    <div style="width:100%;max-width:760px;">
+    <div style="width:100%;max-width:860px;transform:scale(0.92);transform-origin:top center;">
       <div class="sec-label">02 · THE SOLUTION</div>
-      <div class="sec-title"><span class="glitch-wrap"><span class="glitch-main">Automated. Precise. Live.</span><span class="glitch-ghost" aria-hidden="true">Automated. Precise. Live.</span></span></div>
-      <div class="sec-rule"></div>
-      <div class="solution-steps">
-        <div class="step"><div class="step-idx">01</div><div>
-          <div class="step-title">Ingest your AI Landscape</div>
-          <div class="step-desc">Guided input flow maps your practices against the regulatory surface.</div>
-        </div></div>
-        <div class="step"><div class="step-idx">02</div><div>
-          <div class="step-title">Automated Regulation Check</div>
-          <div class="step-desc">LegalBERT fine-tuned on synthetically generated training data. RAG pipeline checks your practices against EU AI Act articles.</div>
-        </div></div>
-        <div class="step"><div class="step-idx">03</div><div>
-          <div class="step-title">Risk Dashboard</div>
-          <div class="step-desc">Every compliance domain scored and flagged per article.</div>
-        </div></div>
-        <div class="step"><div class="step-idx">04</div><div>
-          <div class="step-title">Explainability Layer</div>
-          <div class="step-desc">SHAP/LIME surfaces which inputs triggered a violation.</div>
-        </div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- S4: ARCHITECTURE -->
-  <div class="slide" id="s4">
-    <div style="width:100%;max-width:860px;transform:scale(1.18);transform-origin:center center;">
-      <div class="sec-label">03 · ARCHITECTURE</div>
       <div class="sec-title"><span class="glitch-wrap"><span class="glitch-main">How It Works</span><span class="glitch-ghost" aria-hidden="true">How It Works</span></span></div>
       <div class="sec-rule" style="margin-bottom:18px;"></div>
-      <svg viewBox="0 0 800 310" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <svg viewBox="0 0 700 470" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;max-height:62vh;">
         <defs>
           <marker id="a1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#555"/></marker>
-          <marker id="a2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#777"/></marker>
-          <marker id="a3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#999"/></marker>
+          <marker id="a2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#666"/></marker>
+          <marker id="a3" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+          <marker id="a4" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#999"/></marker>
         </defs>
-        <!-- ROW 1 -->
-        <rect x="20" y="16" width="160" height="56" rx="2" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
-        <text x="100" y="39" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ddd" font-weight="500" letter-spacing="1">COMPANY DOCS</text>
-        <text x="100" y="57" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#777">Policies · Systems</text>
-
-        <rect x="220" y="16" width="160" height="56" rx="2" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
-        <text x="300" y="39" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ddd" font-weight="500" letter-spacing="1">EU AI ACT</text>
-        <text x="300" y="57" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#777">Live Web Scraping</text>
-
-        <rect x="420" y="16" width="160" height="56" rx="2" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
-        <text x="500" y="39" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ddd" font-weight="500" letter-spacing="1">CHROMA DB</text>
-        <text x="500" y="57" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#777">Embeddings Store</text>
-
-        <rect x="620" y="16" width="160" height="56" rx="2" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
-        <text x="700" y="39" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ddd" font-weight="500" letter-spacing="1">FASTAPI</text>
-        <text x="700" y="57" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#777">Backend · REST</text>
-
-        <!-- ROW 2 -->
-        <rect x="20" y="128" width="160" height="56" rx="2" fill="#252525" stroke="#555" stroke-width="1"/>
-        <text x="100" y="151" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ffffff" font-weight="600" letter-spacing="1">LEGALBERT</text>
-        <text x="100" y="169" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#888">Fine-tuned · Classifier</text>
-        <path d="M20,128 l12,0 M20,128 l0,10" stroke="#777" stroke-width="1"/>
-        <path d="M180,128 l-12,0 M180,128 l0,10" stroke="#777" stroke-width="1"/>
-        <path d="M20,184 l12,0 M20,184 l0,-10" stroke="#777" stroke-width="1"/>
-        <path d="M180,184 l-12,0 M180,184 l0,-10" stroke="#777" stroke-width="1"/>
-
-        <rect x="220" y="128" width="360" height="56" rx="2" fill="#252525" stroke="#555" stroke-width="1"/>
-        <text x="400" y="151" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ffffff" font-weight="600" letter-spacing="1">RAG PIPELINE</text>
-        <text x="400" y="169" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#888">Retrieval · Matching · Classification</text>
-        <path d="M220,128 l12,0 M220,128 l0,10" stroke="#777" stroke-width="1"/>
-        <path d="M580,128 l-12,0 M580,128 l0,10" stroke="#777" stroke-width="1"/>
-        <path d="M220,184 l12,0 M220,184 l0,-10" stroke="#777" stroke-width="1"/>
-        <path d="M580,184 l-12,0 M580,184 l0,-10" stroke="#777" stroke-width="1"/>
-
-        <rect x="620" y="128" width="160" height="56" rx="2" fill="#252525" stroke="#555" stroke-width="1"/>
-        <text x="700" y="151" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#ffffff" font-weight="600" letter-spacing="1">SHAP / LIME</text>
-        <text x="700" y="169" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#888">Explainability</text>
-
-        <!-- ROW 3 -->
-        <rect x="120" y="240" width="560" height="54" rx="2" fill="#f2f2f2" stroke="#bbb" stroke-width="1"/>
-        <text x="400" y="263" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#111" font-weight="600" letter-spacing="1">COMPLIANCE DASHBOARD</text>
-        <text x="400" y="281" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#666">Risk Status · Article Flags · Remediation Actions</text>
-        <path d="M120,240 l12,0 M120,240 l0,8" stroke="#999" stroke-width="1"/>
-        <path d="M680,240 l-12,0 M680,240 l0,8" stroke="#999" stroke-width="1"/>
-        <path d="M120,294 l12,0 M120,294 l0,-8" stroke="#999" stroke-width="1"/>
-        <path d="M680,294 l-12,0 M680,294 l0,-8" stroke="#999" stroke-width="1"/>
-
-        <!-- CONNECTORS -->
-        <path d="M100,72 L100,128" stroke="#444" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a1)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="7s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.3;1;0.6;1" dur="8s" repeatCount="indefinite"/></path>
-        <path d="M300,72 L300,128" stroke="#444" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a1)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="5.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.4;1;0.7;1" dur="6.5s" repeatCount="indefinite"/></path>
-        <path d="M500,72 L500,128" stroke="#444" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a1)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.5;1;0.3;1" dur="7s" repeatCount="indefinite"/></path>
-        <path d="M700,72 L700,128" stroke="#444" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a1)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.3;1;0.7;1" dur="6s" repeatCount="indefinite"/></path>
-        <path d="M180,156 L220,156" stroke="#555" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a2)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.2;1;0.8;1" dur="4.5s" repeatCount="indefinite"/></path>
-        <path d="M580,156 L620,156" stroke="#555" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a2)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.3;1;0.6;1" dur="6s" repeatCount="indefinite"/></path>
-        <path d="M400,184 L400,240" stroke="#777" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a3)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="3.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.2;1;0.5;1" dur="4s" repeatCount="indefinite"/></path>
-        <path d="M700,184 L700,212 L680,212 L680,240" stroke="#777" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a3)"><animate attributeName="stroke-dashoffset" values="0;-18;0" dur="6s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.4;1;0.3;1;0.7;1" dur="7s" repeatCount="indefinite"/></path>
-        <path d="M100,184 L100,212 L120,212 L120,240" stroke="#777" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a3)"><animate attributeName="stroke-dashoffset" values="0;-18;0" dur="5.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.4;1;0.3;1" dur="6.5s" repeatCount="indefinite"/></path>
+        <rect x="80" y="10" width="180" height="54" rx="2" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
+        <text x="170" y="33" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#ddd" font-weight="500" letter-spacing="1">COMPANY DOCS</text>
+        <text x="170" y="52" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#777">Policies · AI Systems</text>
+        <rect x="395" y="10" width="180" height="54" rx="2" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
+        <text x="485" y="33" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#ddd" font-weight="500" letter-spacing="1">EU AI ACT</text>
+        <text x="485" y="52" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#777">Live Web Scraping</text>
+        <!-- ROW 2: ChromaDB -->
+        <rect x="395" y="110" width="180" height="54" rx="2" fill="#1e1e1e" stroke="#444" stroke-width="1"/>
+        <text x="485" y="133" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#ddd" font-weight="500" letter-spacing="1">CHROMA DB</text>
+        <text x="485" y="152" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#777">Chunk · Embed · Store</text>
+        <path d="M485,64 L485,110" stroke="#444" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a1)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="5s" repeatCount="indefinite"/></path>
+        <!-- ROW 3: RAG PIPELINE -->
+        <text x="350" y="198" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555" letter-spacing="2">RAG PIPELINE</text>
+        <rect x="40" y="205" width="580" height="64" rx="2" fill="#252525" stroke="#555" stroke-width="1"/>
+        <text x="330" y="232" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#fff" font-weight="600" letter-spacing="1">RETRIEVAL · MATCHING</text>
+        <text x="330" y="254" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#888">User Input embedded → ChromaDB queried → relevant Articles retrieved</text>
+        <path d="M40,205 l12,0 M40,205 l0,10" stroke="#666" stroke-width="1"/>
+        <path d="M620,205 l-12,0 M620,205 l0,10" stroke="#666" stroke-width="1"/>
+        <path d="M40,269 l12,0 M40,269 l0,-10" stroke="#666" stroke-width="1"/>
+        <path d="M620,269 l-12,0 M620,269 l0,-10" stroke="#666" stroke-width="1"/>
+        <!-- Arrows into RAG -->
+        <path d="M170,64 L170,205" stroke="#444" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a1)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="6s" repeatCount="indefinite"/></path>
+        <path d="M485,164 L485,205" stroke="#444" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a1)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="4.5s" repeatCount="indefinite"/></path>
+        <!-- ROW 4: LegalBERT + SHAP -->
+        <rect x="40" y="315" width="270" height="58" rx="2" fill="#252525" stroke="#555" stroke-width="1"/>
+        <text x="175" y="340" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#fff" font-weight="600" letter-spacing="1">LEGALBERT</text>
+        <text x="175" y="360" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#888">Fine-tuned on Synthetical Data</text>
+        <path d="M40,315 l12,0 M40,315 l0,10" stroke="#777" stroke-width="1"/>
+        <path d="M310,315 l-12,0 M310,315 l0,10" stroke="#777" stroke-width="1"/>
+        <path d="M40,373 l12,0 M40,373 l0,-10" stroke="#777" stroke-width="1"/>
+        <path d="M310,373 l-12,0 M310,373 l0,-10" stroke="#777" stroke-width="1"/>
+        <rect x="350" y="315" width="270" height="58" rx="2" fill="#252525" stroke="#555" stroke-width="1"/>
+        <text x="485" y="340" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#fff" font-weight="600" letter-spacing="1">SHAP</text>
+        <text x="485" y="360" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#888">Which inputs triggered the verdict?</text>
+        <path d="M175,269 L175,315" stroke="#666" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a2)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="3.5s" repeatCount="indefinite"/></path>
+        <path d="M485,269 L485,315" stroke="#666" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a2)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="5s" repeatCount="indefinite"/></path>
+        <!-- ROW 5: Dashboard -->
+        <rect x="80" y="410" width="500" height="54" rx="2" fill="#f2f2f2" stroke="#bbb" stroke-width="1"/>
+        <text x="330" y="433" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#111" font-weight="600" letter-spacing="1">COMPLIANCE DASHBOARD</text>
+        <text x="330" y="452" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#666">Risk Status · Article Flags · Remediation · FastAPI</text>
+        <path d="M80,410 l12,0 M80,410 l0,8" stroke="#999" stroke-width="1"/>
+        <path d="M580,410 l-12,0 M580,410 l0,8" stroke="#999" stroke-width="1"/>
+        <path d="M80,464 l12,0 M80,464 l0,-8" stroke="#999" stroke-width="1"/>
+        <path d="M580,464 l-12,0 M580,464 l0,-8" stroke="#999" stroke-width="1"/>
+        <path d="M175,373 L175,392 L250,392 L250,410" stroke="#888" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a3)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="4s" repeatCount="indefinite"/></path>
+        <path d="M485,373 L485,392 L410,392 L410,410" stroke="#888" stroke-width="1" stroke-dasharray="4 3" marker-end="url(#a3)"><animate attributeName="stroke-dashoffset" values="0;-14;0" dur="5.5s" repeatCount="indefinite"/></path>
       </svg>
     </div>
   </div>
 
-  <!-- S5: ROADMAP -->
-  <div class="slide" id="s5">
+  <!-- S4: ROADMAP -->
+  <div class="slide" id="s4">
     <div style="width:100%;max-width:860px;">
-      <div class="sec-label">04 · ROADMAP</div>
+      <div class="sec-label">03 · ROADMAP</div>
       <div class="sec-title"><span class="glitch-wrap"><span class="glitch-main">Three Stages.</span><span class="glitch-ghost" aria-hidden="true">Three Stages.</span></span></div>
       <div class="sec-rule" style="margin-bottom:24px;"></div>
-
       <div style="border:1px solid var(--border);border-radius:2px;overflow:hidden;width:100%;">
-        <!-- Header row -->
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);">
           <div style="padding:12px 18px;font-size:10px;letter-spacing:.2em;color:var(--ghost);">FEATURE</div>
           <div style="padding:12px 18px;font-size:10px;letter-spacing:.2em;color:var(--muted);border-left:1px solid var(--border);text-align:center;">MVP</div>
           <div style="padding:12px 18px;font-size:10px;letter-spacing:.2em;color:var(--muted);border-left:1px solid var(--border);text-align:center;">STAGE 02</div>
           <div style="padding:12px 18px;font-size:10px;letter-spacing:.2em;color:var(--muted);border-left:1px solid var(--border);text-align:center;">STAGE 03</div>
         </div>
-
-        <!-- Rows -->
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);background:var(--surface);">
           <div style="padding:11px 18px;font-size:.84rem;color:var(--muted);">Regulation Source</div>
           <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">Manual Upload</div>
-          <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">Live Scraping</div>
-          <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">Live Scraping</div>
+          <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">Scraping</div>
+          <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">Scraping</div>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);">
           <div style="padding:11px 18px;font-size:.84rem;color:var(--muted);">User Input</div>
@@ -321,7 +228,7 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
           <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">✓</div>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;border-bottom:1px solid var(--border);">
-          <div style="padding:11px 18px;font-size:.84rem;color:var(--muted);">Explainability (SHAP/LIME)</div>
+          <div style="padding:11px 18px;font-size:.84rem;color:var(--muted);">Explainability (SHAP)</div>
           <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">✓</div>
           <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">✓</div>
           <div style="padding:11px 18px;font-size:.84rem;color:var(--active);border-left:1px solid var(--border);text-align:center;">✓</div>
@@ -348,10 +255,10 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
     </div>
   </div>
 
-  <!-- S6: PROJECT VALUE -->
-  <div class="slide" id="s6">
+  <!-- S5: PROJECT VALUE -->
+  <div class="slide" id="s5">
     <div style="width:100%;max-width:800px;">
-      <div class="sec-label">05 · PROJECT VALUE</div>
+      <div class="sec-label">04 · PROJECT VALUE</div>
       <div class="sec-title"><span class="glitch-wrap"><span class="glitch-main">What We Reinforce</span><span class="glitch-ghost" aria-hidden="true">What We Reinforce</span></span></div>
       <div class="sec-rule"></div>
       <div class="value-grid">
@@ -379,30 +286,27 @@ html,body{height:100%;overflow:hidden;background:var(--bg);font-family:'JetBrain
     </div>
   </div>
 
-  <!-- S7: CTA -->
-  <div class="slide" id="s7">
+  <!-- S6: CTA -->
+  <div class="slide" id="s6">
     <div class="cta-box">
       <div class="scanlines"></div>
       <div class="corners"><div class="c tl" style="border-color:var(--border3)"></div><div class="c tr" style="border-color:var(--border3)"></div><div class="c bl" style="border-color:var(--border3)"></div><div class="c br" style="border-color:var(--border3)"></div></div>
-      <div class="tag" style="margin-bottom:20px;">06 · JOIN THE BUILD</div>
+      <div class="tag" style="margin-bottom:20px;">05 · JOIN THE BUILD</div>
       <div class="cta-title">
         <span class="glitch-wrap"><span class="glitch-main">Come build<br/>what's next.</span><span class="glitch-ghost" aria-hidden="true">Come build<br/>what's next.</span></span>
         <span class="cursor"></span>
       </div>
-
     </div>
   </div>
 
 </div>
-
 <div class="nav">
   <button class="nav-btn" id="prevBtn" disabled onclick="go(-1)">← PREV</button>
   <div class="seg-wrap" id="segs"></div>
   <button class="nav-btn" id="nextBtn" onclick="go(1)">NEXT →</button>
 </div>
-
 <script>
-const TOTAL=7;let cur=1;
+const TOTAL=6;let cur=1;
 const segsEl=document.getElementById('segs');
 for(let i=0;i<TOTAL;i++){const d=document.createElement('div');d.className='seg';d.id='seg'+i;segsEl.appendChild(d);}
 function updateSegs(){for(let i=0;i<TOTAL;i++){const el=document.getElementById('seg'+i);if(i<cur-1){el.style.width='8px';el.style.background='#666';}else if(i===cur-1){el.style.width='24px';el.style.background='#eee';}else{el.style.width='8px';el.style.background='#333';}}}
